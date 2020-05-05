@@ -16,11 +16,7 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Nisanka/Desktop/Program Files/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nisanka/Desktop/Program Files/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

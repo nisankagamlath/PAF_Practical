@@ -4,13 +4,13 @@ import java.sql.*;
  
 public class Hospital{ 
 	
-	private Connection connect(){ 
+	public Connection connect(){ 
 		
 		Connection con = null; 
 	
 		try{
 			
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			
 			   
 			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hdb", "root", "");
@@ -36,10 +36,10 @@ public class Hospital{
  
 		 
 			String query = " insert into hospital (`hId`, `husername`, `hpassword`, `hName`, `address`)" + " values (?, ?, ?, ?, ?)"; 
-			String Query = "insert into user (`username`, `password`)" + " values(?, ?)";
+			//String Query = "insert into user (`username`, `password`)" + " values(?, ?)";
 			
 			PreparedStatement preparedStmt = con.prepareStatement(query); 
-			PreparedStatement prepStm = con.prepareStatement(Query);
+			//PreparedStatement prepStm = con.prepareStatement(Query);
      
 			 preparedStmt.setInt(1, 0);
 			 preparedStmt.setString(2, husername);
@@ -47,11 +47,11 @@ public class Hospital{
 			 preparedStmt.setString(4, hName);
 			 preparedStmt.setString(5, address);
 			 
-			 prepStm.setString(1, husername);
-			 prepStm.setString(2, hpassword);
+			 //prepStm.setString(1, husername);
+			 //prepStm.setString(2, hpassword);
 			 		
 			 preparedStmt.execute();
-			 prepStm.execute();
+			 //prepStm.execute();
 			 con.close(); 
 		 
 			 output = "Inserted successfully";

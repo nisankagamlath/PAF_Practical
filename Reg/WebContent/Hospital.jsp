@@ -1,13 +1,12 @@
+<%@page import="com.Hospital"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%
     
     if (request.getParameter("husername") != null)  
     {  
-    	session.setAttribute("husername", request.getParameter("husername"));  
-    	session.setAttribute("hpassword", request.getParameter("hpassword"));  
-    	session.setAttribute("hName", request.getParameter("hName"));  
-    	session.setAttribute("address", request.getParameter("address"));  
+    	Hospital Obj = new Hospital();  
+    	Obj.connect();//For testing the connect method   
     	
     }
     
