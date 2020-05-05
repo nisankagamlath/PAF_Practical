@@ -35,7 +35,6 @@
 	<br>
 	<table border="1">
 		<tr>
-			<th>HospitalID</th>
 			<th>username</th>
 			<th>password</th>
 			<th>Hospital Name</th>
@@ -44,11 +43,10 @@
 			<th>Remove</th>
 		</tr>
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><%out.print(session.getAttribute("husername")); %></td>
+			<td><%out.print(session.getAttribute("hpassword")); %></td>
+			<td><%out.print(session.getAttribute("hName")); %></td>
+			<td><%out.print(session.getAttribute("address")); %></td>
 			<td><input type="button" name="btnUpdate" value="Update"></td>
 			<td><input type="button" name="btnRemove" value="Remove"></td>
 		</tr>	
