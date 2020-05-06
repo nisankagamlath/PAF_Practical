@@ -96,7 +96,7 @@ public class Hospital{
 				output += "<td>" + address + "</td>";     
 				
 				output += "<td><input name='btnUpdate' type='button'  value='Update' class=' btnUpdate btn btn-secondary'></td>"
-						+ "<td><input name='btnRemove' type='button' value='Remove' class='btn btn-danger' data-itemid='" 
+						+ "<td><input name='btnRemove' type='button' value='Remove' class='btn btn-danger' data-hId='" 
 						+ hId + "'>"  + "</form></td></tr>"; 
 			} 
 

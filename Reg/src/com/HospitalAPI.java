@@ -23,6 +23,7 @@ public class HospitalAPI extends HttpServlet {
     private static Map getParasMap(HttpServletRequest request) {
 		
 		Map<String, String> map = new HashMap<String, String>(); 
+		
 		try 
 		{
 			
@@ -47,11 +48,11 @@ public class HospitalAPI extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String output = obj.insertHospital(request.getParameter("husername"),     
 											request.getParameter("hpassword"),     
 											request.getParameter("hName"),        
