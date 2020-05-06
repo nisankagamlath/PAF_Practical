@@ -86,16 +86,16 @@ public class Hospital{
 				String address = rs.getString("address");
 					
 
-				output += "<tr><td>" + hId + "</td>";     
-				output += "<td>" + husername + "</td>";
+				output += "<tr>"
+						+ "<td><input id=\"hidHospitalIDUpdate\" name=\"hidHospitalIDUpdate\" type=\"hidden\" value=\"" + hId + "\">"+ husername + "</td>";
 				output += "<td>" + hpassword + "</td>";
 				output += "<td>" + hName + "</td>";
 				output += "<td>" + address + "</td>";     
 				
-				output += "<td><input name=\"btnUpdate\" type=\"button\"  value=\"Update\"></td>"
+				output += "<td><input name=\"btnUpdate\" type=\"button\"  value=\"Update\" class=\" btnUpdate btn btn-secondary\"></td>"
 						+ "<td><form method=\"post\" action=\"Hospital.jsp\">"      
-						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\">"      
-						+ "<input name=\"hId\" type=\"hidden\" value=\"" + hId      
+						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"      
+						+ "<input name=\"hidHospitalIDDelete\" type=\"hidden\" value=\"" + hId      
 						+ "\">" + "</form></td></tr>"; 
 			} 
 
