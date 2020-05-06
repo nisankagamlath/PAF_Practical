@@ -81,7 +81,7 @@ public class Hospital{
 			while (rs.next()){
 				String hId = Integer.toString(rs.getInt("hId"));
 				String husername = rs.getString("husername");
-				String hpassword = Integer.toString(rs.getInt("hpassword"));
+				String hpassword = rs.getString("hpassword");
 				String hName = rs.getString("hName");     
 				String address = rs.getString("address");
 					
@@ -112,7 +112,7 @@ public class Hospital{
 		return output; 
  } 
 
-	public String updateHospital(int hId, String husername, int hpassword, String hName, String address){
+	public String updateHospital(int hId, String husername, String hpassword, String hName, String address){
 		String output = ""; 
 	 
 		try{    
@@ -127,7 +127,7 @@ public class Hospital{
 	       PreparedStatement preparedStmt = con.prepareStatement(query); 
 	 
 	       preparedStmt.setString(1, husername);
-	       preparedStmt.setInt(2, hpassword);
+	       preparedStmt.setString(2, hpassword);
 	       preparedStmt.setString(3, hName);
 	       preparedStmt.setString(4, address);
 	       preparedStmt.setInt(5, hId);

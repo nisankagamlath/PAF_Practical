@@ -21,7 +21,7 @@
     	{
     		stsMsg = Obj.updateHospital(Integer.parseInt(request.getParameter("hidHospitalIDSave")), 
     				request.getParameter("husername"),     
-    				Integer.parseInt(request.getParameter("hpassword")),        
+    				request.getParameter("hpassword"),        
     				request.getParameter("hName"),     
     				request.getParameter("address")); 
     	}
@@ -53,11 +53,14 @@
 	
 		username:<input  id="husername" type="text" name="husername" value="" class="form-control form-control-sm"><br>
 		
-		password:<input id="hpassword" type="password" name="hpassword" value="" class="form-control form-control-sm"><br>
+		password:<input id="hpassword" type="password" name="hpassword" value="Length must be 8 characters" class="form-control form-control-sm"><br>
 		
 		Hospital Name:<input id="hName" type="text" name="hName" value="" class="form-control form-control-sm"><br>
 		
 		Address:<input id="address" type="text" name="address" value="" class="form-control form-control-sm"><br>
+		
+		<div id="alertSuccess" class="alert alert-success"></div> 
+		<div id="alertError" class="alert alert-danger"></div> 
 		
 		<input id="btnSave" type="button" name="btnSave" value="Save" class="btn btn-primary">
 		
