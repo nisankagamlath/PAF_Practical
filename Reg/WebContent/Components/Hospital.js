@@ -14,7 +14,8 @@ $(document).on("click", "#btnSave", function(event)
 			$("#alertError").text("");  
 			$("#alertError").hide(); 
 			
-			var status = validateItemForm();
+			var status = validateForm();
+			
 			if(status != true){
 				
 				$("#alertError").text(status);
@@ -90,7 +91,7 @@ $(document).on("click", ".btnRemove", function(event)
 	{
 		url : "HospitalAPI",   
 		type : "DELETE",   
-		data : "hId=" + $(this).data("hId"),   
+		data : "hId=" + $(this).data("hid"),   
 		dataType : "text",   
 		complete : function(response, status)   
 		{    
@@ -137,7 +138,7 @@ function onHospitalDeleteComplete(response, status)
 		
 }
 
-function validateItemForm() 
+function validateForm() 
 {
 	if ($("#husername").val().trim() == "")  
 	{   
@@ -158,5 +159,7 @@ function validateItemForm()
 	{   
 		return "Insert Hospital Address";  
 	} 
+	
+	return true;
 
 }
