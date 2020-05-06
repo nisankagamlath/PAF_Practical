@@ -52,7 +52,7 @@ public class Hospital{
 			 String newHospitals = readHospitals(); 
 			 output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}"; 
 		 
-			 output = "Inserted successfully";
+			 
 		 
 	 } 
 		catch (Exception e)
@@ -138,8 +138,7 @@ public class Hospital{
 	       
 	       String newHospitals = readHospitals(); 
 	       output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}";
-	 
-	       output = "Updated successfully";   
+	   
 	       
 		}   
 		catch (Exception e){    
@@ -175,7 +174,7 @@ public class Hospital{
 			String newHospitals = readHospitals(); 
 			output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}";
 	 
-			output = "Deleted successfully";
+			
 			
 		}   
 		catch (Exception e){
