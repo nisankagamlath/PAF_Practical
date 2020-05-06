@@ -6,10 +6,20 @@
     if (request.getParameter("husername") != null)  
     {  
     	Hospital Obj = new Hospital();  
-    	Obj.connect();//For testing the connect method   
+    	String stsMsg = Obj.insertHospital(request.getParameter("husername"),     
+    			request.getParameter("hpassword"),     
+    			request.getParameter("hName"),        
+    			request.getParameter("address"));   
     	
+    	session.setAttribute("statusMsg", stsMsg); 
     }
     
+    if (request.getParameter("hId") != null) 
+    {
+    	Hospital hObj = new Hospital();
+    	String stsMsg = hObj.deleteHospital(request.getParameter("hId"));
+    	session.setAttribute("statusMsg", stsMsg); 
+    }
     
     %>
 <!DOCTYPE html>
@@ -28,27 +38,16 @@
 		<label>Hospital Name</label>
 		<input type="text" name="hName" value=""><br>
 		<label>Address</label>
-		<input type="text" name="address" values=""><br>
-		<input type="submit" name="btnSubmit" values="Save">
+		<input type="text" name="address" value=""><br>
+		<input type="submit" name="btnSubmit" value="Save">
 	</form>
 	<br>
-	<table border="1">
-		<tr>
-			<th>username</th>
-			<th>password</th>
-			<th>Hospital Name</th>
-			<th>Address</th>
-			<th>Update</th>
-			<th>Remove</th>
-		</tr>
-		<tr>
-			<td><%out.print(session.getAttribute("husername")); %></td>
-			<td><%out.print(session.getAttribute("hpassword")); %></td>
-			<td><%out.print(session.getAttribute("hName")); %></td>
-			<td><%out.print(session.getAttribute("address")); %></td>
-			<td><input type="button" name="btnUpdate" value="Update"></td>
-			<td><input type="button" name="btnRemove" value="Remove"></td>
-		</tr>	
-	</table>
+	<% out.print(session.getAttribute("statusMsg")); %> 
+	<br>
+	<% 
+		Hospital hospitalObj = new Hospital();
+		out.print(hospitalObj.readHospitals()); 
+		
+	%>
 </body>
 </html>

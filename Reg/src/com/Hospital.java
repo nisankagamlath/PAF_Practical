@@ -36,22 +36,17 @@ public class Hospital{
  
 		 
 			String query = " insert into hospital (`hId`, `husername`, `hpassword`, `hName`, `address`)" + " values (?, ?, ?, ?, ?)"; 
-			//String Query = "insert into user (`username`, `password`)" + " values(?, ?)";
 			
 			PreparedStatement preparedStmt = con.prepareStatement(query); 
-			//PreparedStatement prepStm = con.prepareStatement(Query);
      
 			 preparedStmt.setInt(1, 0);
 			 preparedStmt.setString(2, husername);
 			 preparedStmt.setString(3, hpassword);
 			 preparedStmt.setString(4, hName);
-			 preparedStmt.setString(5, address);
-			 
-			 //prepStm.setString(1, husername);
-			 //prepStm.setString(2, hpassword);
+			 preparedStmt.setString(5, address);			 
 			 		
 			 preparedStmt.execute();
-			 //prepStm.execute();
+			 
 			 con.close(); 
 		 
 			 output = "Inserted successfully";
@@ -77,23 +72,31 @@ public class Hospital{
 			if (con == null)    
 				{return "Error while connecting to the database for reading."; } 
 
-			output = "<table border=\"1\"><tr><th>hId</th><th>Name</th><th>address</th></tr>"; 
+			output = "<table border=\"1\"><tr><th>hId</th><th>Username</th><th>Password</th><th>Name</th><th>address</th><th>Update</th><th>Remove</th></tr>"; 
 
-			String query = "select hId, hName, address from hospital";    
+			String query = "select * from hospital";    
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query); 
 
 			while (rs.next()){
 				String hId = Integer.toString(rs.getInt("hId"));
+				String husername = rs.getString("husername");
+				String hpassword = Integer.toString(rs.getInt("hpassword"));
 				String hName = rs.getString("hName");     
 				String address = rs.getString("address");
 					
 
 				output += "<tr><td>" + hId + "</td>";     
-				output += "<td>" + hName + "</td>";     
+				output += "<td>" + husername + "</td>";
+				output += "<td>" + hpassword + "</td>";
+				output += "<td>" + hName + "</td>";
 				output += "<td>" + address + "</td>";     
 				
-				output += "<td><input name=\"btnUpdate\" type=\"button\"  value=\"Update\" class=\"btn btn-secondary\"></td>" + "<td><form method=\"post\" action=\"Admin.jsp\">"      + "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"      class=\"btn btn-danger\">"      + "<input name=\"hId\" type=\"hidden\" value=\"" + hId      + "\">" + "</form></td></tr>"; 
+				output += "<td><input name=\"btnUpdate\" type=\"button\"  value=\"Update\"></td>"
+						+ "<td><form method=\"post\" action=\"Hospital.jsp\">"      
+						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\">"      
+						+ "<input name=\"hId\" type=\"hidden\" value=\"" + hId      
+						+ "\">" + "</form></td></tr>"; 
 			} 
 
 			con.close(); 
@@ -109,7 +112,7 @@ public class Hospital{
 		return output; 
  } 
 
-	public String updateHospital(int hId, String hName, String address){
+	public String updateHospital(int hId, String husername, int hpassword, String hName, String address){
 		String output = ""; 
 	 
 		try{    
@@ -119,14 +122,15 @@ public class Hospital{
 			if (con == null)    
 				{return "Error while connecting to the database for updating."; } 
 	 
-	       String query = "UPDATE hospital SET hName=?, address=?" + "WHERE hId=?"; 
+	       String query = "UPDATE hospital SET husername=?, hpassword=?, hName=?, address=?" + "WHERE hId=?"; 
 	 
 	       PreparedStatement preparedStmt = con.prepareStatement(query); 
 	 
-	       
-	       preparedStmt.setString(1, hName);
-	       preparedStmt.setString(2, address);
-	       preparedStmt.setInt(3, hId);
+	       preparedStmt.setString(1, husername);
+	       preparedStmt.setInt(2, hpassword);
+	       preparedStmt.setString(3, hName);
+	       preparedStmt.setString(4, address);
+	       preparedStmt.setInt(5, hId);
 	       	 
 	       preparedStmt.execute();    
 	       con.close(); 
