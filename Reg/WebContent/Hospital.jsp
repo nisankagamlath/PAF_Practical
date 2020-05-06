@@ -43,13 +43,13 @@
 <meta charset="ISO-8859-1">
 <title>Hospital Management</title>
 <link rel="stylesheet" href="Views/css/bootstrap.min.css"> 
-<script src="Components/jquery-3.2.1.min.js"></script> 
+<script src="Components/jquery-3.5.1.min.js"></script> 
 <script src="Components/Hospital.js"></script> 
 </head>
 <body>
 	<h1>Hospital Data Management</h1>
 	
-	<form  id="formHospital" name="formHospital" method="post" "action="Hospital.jsp" >
+	<form  id="formHospital" name="formHospital" method="post" action="Hospital.jsp" >
 	
 		username:<input  id="husername" type="text" name="husername" value="" class="form-control form-control-sm"><br>
 		

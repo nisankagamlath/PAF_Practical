@@ -72,7 +72,7 @@ public class Hospital{
 			if (con == null)    
 				{return "Error while connecting to the database for reading."; } 
 
-			output = "<table border=\"1\"><tr><th>hId</th><th>Username</th><th>Password</th><th>Name</th><th>address</th><th>Update</th><th>Remove</th></tr>"; 
+			output = "<table border=\"1\"><tr><th>Username</th><th>Password</th><th>Name</th><th>address</th><th>Update</th><th>Remove</th></tr>"; 
 
 			String query = "select * from hospital";    
 			Statement stmt = con.createStatement();
