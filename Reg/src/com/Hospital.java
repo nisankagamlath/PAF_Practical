@@ -48,13 +48,16 @@ public class Hospital{
 			 preparedStmt.execute();
 			 
 			 con.close(); 
+			 
+			 String newHospitals = readHospitals(); 
+			 output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}"; 
 		 
 			 output = "Inserted successfully";
 		 
 	 } 
 		catch (Exception e)
 	 {
-			output = "Error while inserting the item.";    
+			output = "{\"status\":\"error\", \"data\":\"Error while inserting the item.\"}";     
 			System.err.println(e.getMessage());   
 	} 
 		 
@@ -72,7 +75,7 @@ public class Hospital{
 			if (con == null)    
 				{return "Error while connecting to the database for reading."; } 
 
-			output = "<table border=\"1\"><tr><th>Username</th><th>Password</th><th>Name</th><th>address</th><th>Update</th><th>Remove</th></tr>"; 
+			output = "<table border='1'><tr><th>Username</th><th>Password</th><th>Name</th><th>address</th><th>Update</th><th>Remove</th></tr>"; 
 
 			String query = "select * from hospital";    
 			Statement stmt = con.createStatement();
@@ -87,16 +90,14 @@ public class Hospital{
 					
 
 				output += "<tr>"
-						+ "<td><input id=\"hidHospitalIDUpdate\" name=\"hidHospitalIDUpdate\" type=\"hidden\" value=\"" + hId + "\">"+ husername + "</td>";
+						+ "<td><input id='hidHospitalIDUpdate' name='hidHospitalIDUpdate' type='hidden' value=\'" + hId + "'>" + husername + "</td>";
 				output += "<td>" + hpassword + "</td>";
 				output += "<td>" + hName + "</td>";
 				output += "<td>" + address + "</td>";     
 				
-				output += "<td><input name=\"btnUpdate\" type=\"button\"  value=\"Update\" class=\" btnUpdate btn btn-secondary\"></td>"
-						+ "<td><form method=\"post\" action=\"Hospital.jsp\">"      
-						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"      
-						+ "<input name=\"hidHospitalIDDelete\" type=\"hidden\" value=\"" + hId      
-						+ "\">" + "</form></td></tr>"; 
+				output += "<td><input name='btnUpdate' type='button'  value='Update' class=' btnUpdate btn btn-secondary'></td>"
+						+ "<td><input name='btnRemove' type='button' value='Remove' class='btn btn-danger' data-itemid='" 
+						+ hId + "'>"  + "</form></td></tr>"; 
 			} 
 
 			con.close(); 
@@ -112,7 +113,7 @@ public class Hospital{
 		return output; 
  } 
 
-	public String updateHospital(int hId, String husername, String hpassword, String hName, String address){
+	public String updateHospital(String hId, String husername, String hpassword, String hName, String address){
 		String output = ""; 
 	 
 		try{    
@@ -130,17 +131,20 @@ public class Hospital{
 	       preparedStmt.setString(2, hpassword);
 	       preparedStmt.setString(3, hName);
 	       preparedStmt.setString(4, address);
-	       preparedStmt.setInt(5, hId);
+	       preparedStmt.setInt(5, Integer.parseInt(hId));
 	       	 
 	       preparedStmt.execute();    
 	       con.close(); 
+	       
+	       String newHospitals = readHospitals(); 
+	       output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}";
 	 
 	       output = "Updated successfully";   
 	       
 		}   
 		catch (Exception e){    
 			
-			output = "Error while updating the item.";    
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the item.\"}";    
 			System.err.println(e.getMessage());   
 			
 		} 
@@ -167,12 +171,15 @@ public class Hospital{
 	 
 			preparedStmt.execute();    
 			con.close(); 
+			
+			String newHospitals = readHospitals(); 
+			output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}";
 	 
 			output = "Deleted successfully";
 			
 		}   
 		catch (Exception e){
-			output = "Error while deleting the item.";   
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";   
 			System.err.println(e.getMessage());   
 			
 		} 
