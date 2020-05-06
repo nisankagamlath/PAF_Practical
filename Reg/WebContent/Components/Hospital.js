@@ -28,8 +28,8 @@ $(document).on("click", "#btnSave", function(event)
 			$.ajax( 
 			{  
 				url : "HospitalAPI",  
-				type : type,  data : 					
-				$("#formHospital").serialize(),				
+				type : type,  
+				data : $("#formHospital").serialize(),				
 				dataType : "text",  
 				complete : function(response, status)
 				{   

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="Views/css/bootstrap.min.css"> 
 <script src="Components/jquery-3.5.1.min.js"></script> 
 <script src="Components/Hospital.js"></script> 
+<link href="Views/css/PatientReg.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
